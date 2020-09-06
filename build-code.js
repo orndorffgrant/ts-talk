@@ -45,6 +45,6 @@ for (const fileName of fileNames) {
   ${doc.content}
   </body>
 </html>`;
-    fs.writeFileSync(`dist/examples/${fileName}.html`, html);
+    fs.writeFileSync(`docs/examples/${fileName}.html`, html);
   });
 }

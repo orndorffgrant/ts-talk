@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build:slides": "marp slides.md -o dist/slides.html",
+    "build:slides": "marp slides.md -o docs/slides.html",
     "build:code": "node build-code.js",
     "build": "npm run build:code && npm run build:slides"
   },
