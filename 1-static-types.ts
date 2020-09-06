@@ -4,13 +4,13 @@ class Cat {
     this.name = name;
   }
   meow(): string {
-    return `${this.name} says: meow`
+    return `${this.name} says: meow`;
   }
 }
 
 const meowAreYou = (cat: Cat) => {
-  console.log(`${cat.meow()} are you?`)
-}
+  console.log(`${cat.meow()} are you?`);
+};
 
 const bella = new Cat("bella");
 const stella = new Cat("stella");
@@ -39,7 +39,7 @@ class Dog {
     this.name = name;
   }
   bark(): string {
-    return `${this.name} says: bark`
+    return `${this.name} says: bark`;
   }
 }
 

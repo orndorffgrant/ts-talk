@@ -1,11 +1,12 @@
 // Classic OOP example using structural typing for implicit
 // polymorphism
 type Vehicle = {
-  color: string,
-}
+  color: string;
+};
+
 const drive = (v: Vehicle, distance: number) => {
-  console.log(`driving ${distance} units in a ${v.color} vehicle`)
-}
+  console.log(`driving ${distance} units in a ${v.color} vehicle`);
+};
 
 
 
@@ -24,9 +25,10 @@ const drive = (v: Vehicle, distance: number) => {
 
 // Straightforward instantiation and use
 const vehicle: Vehicle = {
-  color: "purple"
-}
-drive(vehicle, 12)
+  color: "purple",
+};
+
+drive(vehicle, 12);
 
 
 
@@ -47,7 +49,8 @@ drive(vehicle, 12)
 const obj = {
   color: "blue",
 };
-drive(obj, 10)
+
+drive(obj, 10);
 
 
 
@@ -69,7 +72,8 @@ const obj2 = {
   color: "green",
   hasLeatherSeats: true,
 };
-drive(obj2, 10)
+
+drive(obj2, 10);
 
 
 
@@ -89,16 +93,17 @@ drive(obj2, 10)
 // Now for a another type
 // Note we do not say "extends Vehicle" anywhere
 type Truck = {
-  color: string,
-  carryingCapacity: number,
-}
+  color: string;
+  carryingCapacity: number;
+};
+
 const carry = (t: Truck, load: number) => {
   if (load > t.carryingCapacity) {
-    console.log(`failed to carry ${load} units in a ${t.color} truck`)
+    console.log(`failed to carry ${load} units in a ${t.color} truck`);
   } else {
-    console.log(`carrying ${load} units in a ${t.color} truck`)
+    console.log(`carrying ${load} units in a ${t.color} truck`);
   }
-}
+};
 
 
 
@@ -119,7 +124,8 @@ const truck: Truck = {
   color: "red",
   carryingCapacity: 8,
 };
-carry(truck, 7)
+
+carry(truck, 7);
 
 
 

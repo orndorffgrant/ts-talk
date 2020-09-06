@@ -9,6 +9,7 @@ style: |
 ---
 
 <!-- _class: invert -->
+
 ![bg blur brightness:0.75](https://unsplash.com/photos/sPw8RqYTdn0/download?force=true&w=1920)
 
 # Structural Typing and Algebraic Data Types
@@ -21,24 +22,24 @@ style: |
 
 ## What's ahead?
 
-* Why?
-* Very brief refresher on static types in general
-  * Examples with TS
-* What is structural typing (as opposed to nominal typing)?
-  * Examples with TS
-* What are algebraic data types?
-  * Examples with TS
-* Fun ways to combine them?
-  * Examples with TS
+- Why?
+- Very brief refresher on static types in general
+  - Examples with TS
+- What is structural typing (as opposed to nominal typing)?
+  - Examples with TS
+- What are algebraic data types?
+  - Examples with TS
+- Fun ways to combine them?
+  - Examples with TS
 
 ---
 
 ## Why talk about structural typing and algebraic data types?
 
-* They add a lot of flexibility to static type systems
-* Still allow compiler to check correctness
-* You'll probably encounter them in the future if you haven't already
-* **I think they're cool**
+- They add a lot of flexibility to static type systems
+- Still allow compiler to check correctness
+- You'll probably encounter them in the future if you haven't already
+- **I think they're cool**
 
 ---
 
@@ -46,30 +47,34 @@ style: |
 
 ## Why Typescript?
 
-* Familiar and has both features.
-* Other langs with Algebraic Data Types
-  * C++, F#, Haskell, Kotlin, Perl, Rust
-* with Structural Typing
-  * Go
-* with both
-  * Julia, OCaml, Scala, Swift
+- Familiar and has both features.
+- Other langs with Algebraic Data Types
+  - C++, F#, Haskell, Kotlin, Perl, Rust
+- with Structural Typing
+  - Go
+- with both
+  - Julia, OCaml, Scala, Swift
 
 ---
 
 ## Refresher: Static types
 
-* Often a feature of compiled languages
-* Define explicitly ahead of time what properties are available on variables and parameters
-* Allows compiler to do up front correctness checks on your code
+- Often a feature of compiled languages
+- Define explicitly ahead of time what properties are available on variables and parameters
+- Allows compiler to do up front correctness checks on your code
 
 ---
+
 <!-- _class: invert -->
+
 ![bg](#3178c6)
 
 # Examples with TS
 
 ---
-<!-- _class: invert --> 
+
+<!-- _class: invert -->
+
 ![bg blur brightness:0.75](https://unsplash.com/photos/P_qvsF7Yodw/download?force=true&w=1920)
 
 # Structural Typing
@@ -79,11 +84,26 @@ style: |
 ## Before we get too far: What is _Nominal_ typing?
 
 * It's what we're probably used to.
-* Variable `v` is a `Vehicle` because it was declared a `Vehicle`
-  * The _name_ of the type of `v` is `Vehicle`
-* Variable `t` is a `Truck` but is also a `Vehicle` because we explicitly said `Truck extends Vehicle`
+* Suppose we have a function that requires a `Vehicle` parameter: What can we pass in?
+  * In other words: What counts as a `Vehicle`?
+* A `Vehicle` is a `Vehicle`
+* A `Boulder` is not a `Vehicle`
+  * `"Boulder" != "Vehicle"`
+* A `Truck` that `extends Vehicle` is a `Vehicle`
+  * Explicitly made compatible by the author
 
 ---
+
+<style scoped>
+blockquote {
+  margin-top: 24px;
+  margin-bottom: 48px;
+}
+blockquote + p {
+  font-size: 24px;
+  text-align: right;
+}
+</style>
 
 ## How is _Structural_ typing different?
 
@@ -92,13 +112,17 @@ style: |
 EngineerScotty, Pengo, and Anonymous Wikipedia Editor at 86.44.112.174
 
 ---
+
 <!-- _class: invert -->
+
 ![bg](#3178c6)
 
 # Examples with TS
 
 ---
+
 <!-- _class: invert -->
+
 ![bg blur brightness:0.75](https://www.vaughn.edu/wp-content/uploads/2019/04/Math-Equations-on-Chalkboard.jpg)
 
 # Algebraic Data Types
@@ -133,7 +157,9 @@ EngineerScotty, Pengo, and Anonymous Wikipedia Editor at 86.44.112.174
 * In TS: called an "(Untagged) Union"; operator is `|`
 
 ---
+
 <!-- _class: invert -->
+
 ![bg](#3178c6)
 
 # Examples with TS
