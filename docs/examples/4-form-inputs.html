@@ -22,6 +22,96 @@
     </style>
   </head>
   <body>
-  
+  <pre><code class="hljs language-ts"><span class="hljs-comment">// Combining everything to do some form processing</span>
+
+<span class="hljs-keyword">type</span> FieldCommon = {
+  label: <span class="hljs-built_in">string</span>;
+  description: <span class="hljs-built_in">string</span>;
+};
+
+<span class="hljs-keyword">type</span> TextField = FieldCommon &#x26; {
+  <span class="hljs-keyword">type</span>: <span class="hljs-string">"text"</span>;
+  defaultValue: <span class="hljs-built_in">string</span>;
+  multiline: <span class="hljs-built_in">boolean</span>;
+};
+<span class="hljs-keyword">type</span> NumberField = FieldCommon &#x26; {
+  <span class="hljs-keyword">type</span>: <span class="hljs-string">"number"</span>;
+  defaultValue: <span class="hljs-built_in">number</span>;
+  min: <span class="hljs-built_in">number</span>;
+  max: <span class="hljs-built_in">number</span>;
+};
+<span class="hljs-keyword">type</span> CheckboxField = FieldCommon &#x26; {
+  <span class="hljs-keyword">type</span>: <span class="hljs-string">"checkbox"</span>;
+  defaultValue: <span class="hljs-built_in">boolean</span>;
+};
+
+<span class="hljs-keyword">type</span> Field = TextField | NumberField | CheckboxField;
+
+<span class="hljs-keyword">type</span> Form = {
+  title: <span class="hljs-built_in">string</span>;
+  fields: Field[];
+};
+</code></pre>
+<pre><code class="hljs language-ts"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">renderForm</span>(<span class="hljs-params">form: Form</span>): <span class="hljs-title">string</span> </span>{
+  <span class="hljs-keyword">let</span> html = <span class="hljs-string">""</span>;
+  html += <span class="hljs-string">`&#x3C;h1><span class="hljs-subst">${form.title}</span>&#x3C;/h1>\n\n`</span>;
+
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> field <span class="hljs-keyword">of</span> form.fields) {
+
+    html += <span class="hljs-string">"&#x3C;hr>\n"</span>;
+    html += <span class="hljs-string">`&#x3C;label><span class="hljs-subst">${field.label}</span>&#x3C;/label>&#x3C;br>\n`</span>;
+
+    <span class="hljs-keyword">if</span> (field.type === <span class="hljs-string">"checkbox"</span>) {
+      html += <span class="hljs-string">`&#x3C;input type="checkbox" <span class="hljs-subst">${field.defaultValue ? <span class="hljs-string">"checked"</span> : <span class="hljs-string">""</span>}</span>/>&#x3C;br>\n`</span>;
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (field.type === <span class="hljs-string">"number"</span>) {
+      html += <span class="hljs-string">`&#x3C;input type="number" min="<span class="hljs-subst">${field.min}</span>" max="<span class="hljs-subst">${field.max}</span>" value="<span class="hljs-subst">${field.defaultValue}</span>"/>&#x3C;br>\n`</span>;
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (field.type === <span class="hljs-string">"text"</span>) {
+      <span class="hljs-keyword">if</span> (field.multiline) {
+        html += <span class="hljs-string">`&#x3C;textarea><span class="hljs-subst">${field.defaultValue}</span>&#x3C;/textarea>&#x3C;br>\n`</span>;
+      } <span class="hljs-keyword">else</span> {
+        html += <span class="hljs-string">`&#x3C;input value="<span class="hljs-subst">${field.defaultValue}</span>" />&#x3C;br>\n`</span>;
+      }
+    }
+
+    html += <span class="hljs-string">`&#x3C;span><span class="hljs-subst">${field.description}</span>&#x3C;/span>&#x3C;br>\n\n`</span>;
+  }
+
+  html += <span class="hljs-string">"&#x3C;hr>"</span>;
+
+  <span class="hljs-keyword">return</span> html;
+}
+</code></pre>
+<pre><code class="hljs language-ts"><span class="hljs-keyword">const</span> htmlForm = renderForm({
+  title: <span class="hljs-string">"Survey: Giraffes, too tall?"</span>,
+  fields: [
+    {
+      label: <span class="hljs-string">"How many feet tall is the average giraffe?"</span>,
+      description: <span class="hljs-string">"You don't have to be correct, just guess."</span>,
+      <span class="hljs-keyword">type</span>: <span class="hljs-string">"number"</span>,
+      defaultValue: <span class="hljs-number">23</span>,
+      min: <span class="hljs-number">20</span>,
+      max: <span class="hljs-number">50</span>,
+    },
+    {
+      label:
+        <span class="hljs-string">'Do you agree with the following statement: "Zebras\' greatness are overshadowed by Giraffes."'</span>,
+      description: <span class="hljs-string">"No pun intended."</span>,
+      <span class="hljs-keyword">type</span>: <span class="hljs-string">"checkbox"</span>,
+      defaultValue: <span class="hljs-literal">true</span>,
+    },
+    {
+      label: <span class="hljs-string">"Describe your general attitude towards giraffes."</span>,
+      description:
+        <span class="hljs-string">"Just remember that they will always block your view at a concert."</span>,
+      <span class="hljs-keyword">type</span>: <span class="hljs-string">"text"</span>,
+      defaultValue: <span class="hljs-string">"They're pretty tall."</span>,
+      multiline: <span class="hljs-literal">true</span>,
+    },
+  ],
+});
+
+<span class="hljs-built_in">console</span>.log(htmlForm);
+
+</code></pre>
   </body>
 </html>
