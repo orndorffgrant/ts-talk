@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
+    />
+    <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.2/build/styles/dracula.min.css">
+    <style>
+    body {
+        padding-top: 20vh;
+    }
+    pre {
+        background: initial;
+        border: initial;
+        margin-bottom: 50vh;
+    }
+    code.hljs {
+        padding: 1rem;
+    }
+    </style>
+  </head>
+  <body>
+  <pre><code class="hljs language-ts"><span class="hljs-keyword">class</span> Cat {
+  name: <span class="hljs-built_in">string</span>;
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params">name: <span class="hljs-built_in">string</span></span>) {
+    <span class="hljs-built_in">this</span>.name = name;
+  }
+  meow(): <span class="hljs-built_in">string</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-built_in">this</span>.name}</span> says: meow`</span>;
+  }
+}
+
+<span class="hljs-keyword">const</span> meowAreYou = <span class="hljs-function">(<span class="hljs-params">cat: Cat</span>) =></span> {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">${cat.meow()}</span> are you?`</span>);
+};
+
+<span class="hljs-keyword">const</span> bella = <span class="hljs-keyword">new</span> Cat(<span class="hljs-string">"bella"</span>);
+<span class="hljs-keyword">const</span> stella = <span class="hljs-keyword">new</span> Cat(<span class="hljs-string">"stella"</span>);
+
+meowAreYou(bella);
+meowAreYou(stella);
+</code></pre>
+<pre><code class="hljs language-ts"><span class="hljs-keyword">class</span> Dog {
+  name: <span class="hljs-built_in">string</span>;
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params">name: <span class="hljs-built_in">string</span></span>) {
+    <span class="hljs-built_in">this</span>.name = name;
+  }
+  bark(): <span class="hljs-built_in">string</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-built_in">this</span>.name}</span> says: bark`</span>;
+  }
+}
+
+<span class="hljs-keyword">const</span> fergie = <span class="hljs-keyword">new</span> Dog(<span class="hljs-string">"fergie"</span>);
+
+<span class="hljs-comment">// meowAreYou(fergie);</span>
+
+</code></pre>
+  </body>
+</html>

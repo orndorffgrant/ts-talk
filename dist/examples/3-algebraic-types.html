@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
+    />
+    <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.2/build/styles/dracula.min.css">
+    <style>
+    body {
+        padding-top: 20vh;
+    }
+    pre {
+        background: initial;
+        border: initial;
+        margin-bottom: 50vh;
+    }
+    code.hljs {
+        padding: 1rem;
+    }
+    </style>
+  </head>
+  <body>
+  <pre><code class="hljs language-ts"><span class="hljs-comment">// Product Types</span>
+
+<span class="hljs-keyword">type</span> Mammal = {
+  name: <span class="hljs-built_in">string</span>;
+  lungCapacity: <span class="hljs-built_in">number</span>;
+};
+<span class="hljs-keyword">type</span> OceanDweller = {
+  name: <span class="hljs-built_in">string</span>;
+  favoriteOcean: <span class="hljs-built_in">string</span>;
+};
+
+<span class="hljs-keyword">type</span> OceanDwellingMammal = Mammal &#x26; OceanDweller;
+</code></pre>
+<pre><code class="hljs language-ts"><span class="hljs-keyword">const</span> aardvark: Mammal = {
+  name: <span class="hljs-string">"aardvark"</span>,
+  lungCapacity: <span class="hljs-number">1</span>,
+};
+<span class="hljs-comment">// Is an aardvark an OceanDwellingMammal?</span>
+<span class="hljs-comment">// const oceanArdvark: OceanDwellingMammal = aardvark;</span>
+
+<span class="hljs-keyword">const</span> tuna: OceanDweller = {
+  name: <span class="hljs-string">"tuna"</span>,
+  favoriteOcean: <span class="hljs-string">"pacific"</span>,
+};
+<span class="hljs-comment">// Is a tuna an OceanDwellingMammal?</span>
+<span class="hljs-comment">// const airLovingTuna: OceanDwellingMammal = tuna;</span>
+</code></pre>
+<pre><code class="hljs language-ts"><span class="hljs-keyword">const</span> dolphin = {
+  name: <span class="hljs-string">"dolphin"</span>,
+  lungCapacity: <span class="hljs-number">4</span>,
+  favoriteOcean: <span class="hljs-string">"atlantic"</span>,
+};
+
+<span class="hljs-comment">// Is a dolphin an OceanDwellingMammal?</span>
+<span class="hljs-comment">// const o: OceanDwellingMammal = dolphin;</span>
+</code></pre>
+<pre><code class="hljs language-ts"><span class="hljs-comment">// Sum Types</span>
+
+<span class="hljs-keyword">type</span> SuccessfulString = {
+  status: <span class="hljs-string">"success"</span>;
+  value: <span class="hljs-built_in">string</span>;
+};
+
+<span class="hljs-keyword">type</span> Failure = {
+  status: <span class="hljs-string">"fail"</span>;
+  err: <span class="hljs-built_in">Error</span>;
+};
+
+<span class="hljs-keyword">type</span> StringResult = SuccessfulString | Failure;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">generateDateStringOnlyIfEven</span>(<span class="hljs-params"></span>): <span class="hljs-title">StringResult</span> </span>{
+  <span class="hljs-keyword">const</span> now = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();
+  <span class="hljs-keyword">if</span> (now.getMilliseconds() % <span class="hljs-number">2</span> === <span class="hljs-number">0</span>) {
+    <span class="hljs-keyword">return</span> {
+      status: <span class="hljs-string">"success"</span>,
+      value: now.toISOString(),
+    };
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">return</span> {
+      status: <span class="hljs-string">"fail"</span>,
+      err: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"not an even millisecond"</span>),
+    };
+  }
+}
+</code></pre>
+<pre><code class="hljs language-ts"><span class="hljs-keyword">const</span> s = generateDateStringOnlyIfEven();
+
+<span class="hljs-keyword">if</span> (s.status === <span class="hljs-string">"success"</span>) {
+  <span class="hljs-built_in">console</span>.info(s.value);
+} <span class="hljs-keyword">else</span> {
+  <span class="hljs-built_in">console</span>.error(s.err);
+}
+
+</code></pre>
+  </body>
+</html>

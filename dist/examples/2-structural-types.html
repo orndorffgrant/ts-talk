@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
+    />
+    <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.2/build/styles/dracula.min.css">
+    <style>
+    body {
+        padding-top: 20vh;
+    }
+    pre {
+        background: initial;
+        border: initial;
+        margin-bottom: 50vh;
+    }
+    code.hljs {
+        padding: 1rem;
+    }
+    </style>
+  </head>
+  <body>
+  <pre><code class="hljs language-ts"><span class="hljs-comment">// Classic OOP example using structural typing for implicit</span>
+<span class="hljs-comment">// polymorphism</span>
+<span class="hljs-keyword">type</span> Vehicle = {
+  color: <span class="hljs-built_in">string</span>;
+};
+
+<span class="hljs-keyword">const</span> drive = <span class="hljs-function">(<span class="hljs-params">v: Vehicle, distance: <span class="hljs-built_in">number</span></span>) =></span> {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`driving <span class="hljs-subst">${distance}</span> units in a <span class="hljs-subst">${v.color}</span> vehicle`</span>);
+};
+</code></pre>
+<pre><code class="hljs language-ts"><span class="hljs-comment">// Straightforward instantiation and use</span>
+<span class="hljs-keyword">const</span> vehicle: Vehicle = {
+  color: <span class="hljs-string">"purple"</span>,
+};
+
+drive(vehicle, <span class="hljs-number">12</span>);
+</code></pre>
+<pre><code class="hljs language-ts"><span class="hljs-comment">// Objects with correct "structure" are valid</span>
+<span class="hljs-keyword">const</span> obj = {
+  color: <span class="hljs-string">"blue"</span>,
+};
+
+drive(obj, <span class="hljs-number">10</span>);
+</code></pre>
+<pre><code class="hljs language-ts"><span class="hljs-comment">// Objects with correct "structure" _and extra propertes_ are valid</span>
+<span class="hljs-keyword">const</span> obj2 = {
+  color: <span class="hljs-string">"green"</span>,
+  hasLeatherSeats: <span class="hljs-literal">true</span>,
+};
+
+drive(obj2, <span class="hljs-number">10</span>);
+</code></pre>
+<pre><code class="hljs language-ts"><span class="hljs-comment">// Now for a another type</span>
+<span class="hljs-comment">// Note we do not say "extends Vehicle" anywhere</span>
+<span class="hljs-keyword">type</span> Truck = {
+  color: <span class="hljs-built_in">string</span>;
+  carryingCapacity: <span class="hljs-built_in">number</span>;
+};
+
+<span class="hljs-keyword">const</span> carry = <span class="hljs-function">(<span class="hljs-params">t: Truck, load: <span class="hljs-built_in">number</span></span>) =></span> {
+  <span class="hljs-keyword">if</span> (load > t.carryingCapacity) {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`failed to carry <span class="hljs-subst">${load}</span> units in a <span class="hljs-subst">${t.color}</span> truck`</span>);
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`carrying <span class="hljs-subst">${load}</span> units in a <span class="hljs-subst">${t.color}</span> truck`</span>);
+  }
+};
+</code></pre>
+<pre><code class="hljs language-ts"><span class="hljs-keyword">const</span> truck: Truck = {
+  color: <span class="hljs-string">"red"</span>,
+  carryingCapacity: <span class="hljs-number">8</span>,
+};
+
+carry(truck, <span class="hljs-number">7</span>);
+</code></pre>
+<pre><code class="hljs language-ts"><span class="hljs-comment">// Is a Truck a Vehicle?</span>
+<span class="hljs-comment">// Uncomment to find out</span>
+<span class="hljs-comment">// drive(truck, 15);</span>
+</code></pre>
+<pre><code class="hljs language-ts"><span class="hljs-comment">// Is a Vehicle a Truck?</span>
+<span class="hljs-comment">// Uncomment to find out</span>
+<span class="hljs-comment">// carry(vehicle, 10);</span>
+
+</code></pre>
+  </body>
+</html>
