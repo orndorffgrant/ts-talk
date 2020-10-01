@@ -123,7 +123,7 @@ EngineerScotty, Pengo, and Anonymous Wikipedia Editor at 86.44.112.174
 
 <!-- _class: invert -->
 
-![bg blur brightness:0.75](https://www.vaughn.edu/wp-content/uploads/2019/04/Math-Equations-on-Chalkboard.jpg)
+![bg blur](https://www.vaughn.edu/wp-content/uploads/2020/03/Math-Equations-on-Chalkboard.jpg)
 
 # Algebraic Data Types
 
