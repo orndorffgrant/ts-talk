@@ -4,7 +4,7 @@ type Vehicle = {
   color: string;
 };
 
-const drive = (v: Vehicle, distance: number) => {
+function drive(v: Vehicle, distance: number) {
   console.log(`driving ${distance} units in a ${v.color} vehicle`);
 };
 
@@ -97,7 +97,7 @@ type Truck = {
   carryingCapacity: number;
 };
 
-const carry = (t: Truck, load: number) => {
+function carry(t: Truck, load: number) {
   if (load > t.carryingCapacity) {
     console.log(`failed to carry ${load} units in a ${t.color} truck`);
   } else {

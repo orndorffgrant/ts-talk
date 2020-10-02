@@ -31,7 +31,7 @@ const aardvark: Mammal = {
   lungCapacity: 1,
 };
 // Is an aardvark an OceanDwellingMammal?
-// const oceanArdvark: OceanDwellingMammal = aardvark;
+// const oceanAardvark: OceanDwellingMammal = aardvark;
 
 const tuna: OceanDweller = {
   name: "tuna",

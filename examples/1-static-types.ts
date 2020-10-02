@@ -8,12 +8,31 @@ class Cat {
   }
 }
 
-const meowAreYou = (cat: Cat) => {
-  console.log(`${cat.meow()} are you?`);
-};
-
 const bella = new Cat("bella");
 const stella = new Cat("stella");
+
+bella.meow();
+// Significance: Compiler will prevent this human error
+// stella.bark();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function meowAreYou(cat: Cat) {
+  console.log(`${cat.meow()} are you?`);
+};
 
 meowAreYou(bella);
 meowAreYou(stella);
